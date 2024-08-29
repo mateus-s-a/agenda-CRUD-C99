@@ -165,9 +165,9 @@ int validarData(char* data) {
         }
     }
 
-    // Data atual fixa (exemplo: 15/10/2023)
-    int dia_atual = 15;
-    int mes_atual = 10;
+    // Data fixa (30/12/2023)
+    int dia_atual = 30;
+    int mes_atual = 12;
     int ano_atual = 2023;
 
     // Verifica se a data é menor ou igual à data atual
@@ -229,6 +229,8 @@ int nomeJaCadastrado(char* nome) {
 /* CADASTRO */
 void cadastrarPessoa() {
     if (contador_de_pessoas < MAX_PESSOAS) {
+        system("cls");
+        
         Pessoa nova_pessoa;
         nova_pessoa.id = contador_de_pessoas + 1;
 
@@ -282,14 +284,18 @@ void cadastrarPessoa() {
             }
         } while (resposta == 'S' || resposta == 's');
 
-        printf("Cadastro concluído com sucesso!\n");
+        printf("\nCadastro concluido com sucesso.\n");
+        system("pause");
     } else {
-        printf("Agenda cheia!\n");
+        printf("\nAgenda cheia!\n");
+        system("pause");
     }
 }
 
 /* EDIÇÃO */
 void editarPessoaPorNome() {
+    system("cls");
+    
     char nome[31];
     printf("Digite o nome da pessoa: ");
     scanf(" %[^\n]", nome);
@@ -298,58 +304,76 @@ void editarPessoaPorNome() {
         if (strcmp(agenda[i].nome, nome) == 0) { // Se o nome estiver na agenda
             int opcao;
             do {
-                printf("Menu Editar Pessoa:\n");
+                system("cls");
+
+                printf("Menu Principal / Menu Editar / Menu Editar Pessoa\n");
                 printf("1. Editar Nome\n");
                 printf("2. Editar Data de Nascimento\n");
                 printf("3. Editar CPF\n");
                 printf("4. Editar E-mail\n");
-                printf("5. Retornar ao Menu de Edição\n");
+                printf("5. Retornar ao Menu de Edicao\n");
                 printf("Escolha uma opcao: ");
                 scanf("%d", &opcao);
 
                 switch (opcao) {
                     case 1:
                         do {
+                            system("cls");
+
                             printf("Novo Nome: ");
                             scanf(" %[^\n]", agenda[i].nome);
                         } while (!validarNome(agenda[i].nome));
-                        printf("Nome atualizado com sucesso!\n");
+                        printf("\nNome atualizado com sucesso.\n");
+                        system("pause");
                         break;
                     case 2:
                         do {
+                            system("cls");
+
                             printf("Nova Data de Nascimento (dd/mm/aaaa): ");
                             scanf("%s", agenda[i].nascimento);
                         } while (!validarData(agenda[i].nascimento));
-                        printf("Data de Nascimento atualizada com sucesso!\n");
+                        printf("\nData de Nascimento atualizada com sucesso.\n");
+                        system("pause");
                         break;
                     case 3:
                         do {
+                            system("cls");
+
                             printf("Novo CPF: ");
                             scanf("%s", agenda[i].cpf);
                         } while (!validarCPF(agenda[i].cpf));
-                        printf("CPF atualizado com sucesso!\n");
+                        printf("\nCPF atualizado com sucesso.\n");
+                        system("pause");
                         break;
                     case 4:
                         do {
+                            system("cls");
+
                             printf("Novo E-mail: ");
                             scanf("%s", agenda[i].email);
                         } while (!validarEmail(agenda[i].email));
-                        printf("E-mail atualizado com sucesso!\n");
+                        printf("\nE-mail atualizado com sucesso.\n");
+                        system("pause");
                         break;
                     case 5:
-                        printf("Retornando ao Menu de Edição...\n");
+                        // printf("Retornando ao Menu de Edicao...\n");
                         break;
                     default:
-                        printf("Opcao invalida! Tente novamente.\n");
+                        printf("\nOpcao invalida. Tente novamente.\n");
+                        system("pause");
                 }
             } while (opcao != 5);
             return; // Sai da função após editar
         }
     }
-    printf("Nome não encontrado na agenda.\n");
+    printf("\nNome nao encontrado na agenda.\n");
+    system("pause");
 }
 
 void editarPessoaPorID() {
+    system("cls");
+    
     int id;
     printf("Digite o ID da pessoa: ");
     scanf("%d", &id);
@@ -357,57 +381,75 @@ void editarPessoaPorID() {
     if (id > 0 && id <= contador_de_pessoas) { // Se o ID estiver na agenda
         int opcao;
         do {
-            printf("Menu Editar Pessoa:\n");
+            system("cls");
+
+            printf("Menu Principal / Menu Editar / Menu Editar Pessoa\n");
             printf("1. Editar Nome\n");
             printf("2. Editar Data de Nascimento\n");
             printf("3. Editar CPF\n");
             printf("4. Editar E-mail\n");
-            printf("5. Retornar ao Menu de Edição\n");
+            printf("5. Retornar ao Menu de Edicao\n");
             printf("Escolha uma opcao: ");
             scanf("%d", &opcao);
 
             switch (opcao) {
                 case 1:
                     do {
+                        system("cls");
+
                         printf("Novo Nome: ");
                         scanf(" %[^\n]", agenda[id - 1].nome);
                     } while (!validarNome(agenda[id - 1].nome));
-                    printf("Nome atualizado com sucesso!\n");
+                    printf("\nNome atualizado com sucesso!\n");
+                    system("pause");
                     break;
                 case 2:
                     do {
+                        system("cls");
+
                         printf("Nova Data de Nascimento (dd/mm/aaaa): ");
                         scanf("%s", agenda[id - 1].nascimento);
                     } while (!validarData(agenda[id - 1].nascimento));
-                    printf("Data de Nascimento atualizada com sucesso!\n");
+                    printf("\nData de Nascimento atualizada com sucesso!\n");
+                    system("pause");
                     break;
                 case 3:
                     do {
+                        system("cls");
+
                         printf("Novo CPF: ");
                         scanf("%s", agenda[id - 1].cpf);
                     } while (!validarCPF(agenda[id - 1].cpf));
-                    printf("CPF atualizado com sucesso!\n");
+                    printf("\nCPF atualizado com sucesso!\n");
+                    system("pause");
                     break;
                 case 4:
                     do {
+                        system("cls");
+
                         printf("Novo E-mail: ");
                         scanf("%s", agenda[id - 1].email);
                     } while (!validarEmail(agenda[id - 1].email));
-                    printf("E-mail atualizado com sucesso!\n");
+                    printf("\nE-mail atualizado com sucesso!\n");
+                    system("pause");
                     break;
                 case 5:
-                    printf("Retornando ao Menu de Edição...\n");
+                    // printf("Retornando ao Menu de Edicao...\n");
                     break;
                 default:
-                    printf("Opcao invalida! Tente novamente.\n");
+                    printf("\nOpcao invalida. Tente novamente.\n");
+                    system("pause");
             }
         } while (opcao != 5);
     } else {
-        printf("ID inválido!\n");
+        printf("\nID invalido.\n");
+        system("pause");
     }
 }
 
 void editarTelefonePorNome() {
+    system("cls");
+    
     char nome[31];
     printf("Digite o nome da pessoa: ");
     scanf(" %[^\n]", nome);
@@ -416,12 +458,15 @@ void editarTelefonePorNome() {
         if (strcmp(agenda[i].nome, nome) == 0) { // Se o nome estiver na agenda
             Telefone* telefone_atual = agenda[i].telefones;
             if (telefone_atual == NULL) {
-                printf("Nenhum telefone cadastrado para esta pessoa.\n");
+                printf("\nNenhum telefone cadastrado para esta pessoa.\n");
+                system("pause");
                 return;
             }
 
             int opcao;
             do {
+                system("cls");
+
                 printf("Telefones cadastrados:\n");
                 int j = 1;
                 while (telefone_atual != NULL) {
@@ -441,18 +486,24 @@ void editarTelefonePorNome() {
                         printf("Novo Telefone: ");
                         scanf("%s", telefone_atual->numero);
                     } while (!validarTelefone(telefone_atual->numero));
-                    printf("Telefone atualizado com sucesso!\n");
+                    printf("\nTelefone atualizado com sucesso.\n");
+                    system("pause");
+                    break;
                 } else if (opcao != 0) {
-                    printf("Opcao invalida! Tente novamente.\n");
+                    printf("\nOpcao invalida. Tente novamente.\n");
+                    system("pause");
                 }
             } while (opcao != 0);
             return; // Sai da função após editar
         }
     }
-    printf("Nome não encontrado na agenda.\n");
+    printf("\nNome nao encontrado na agenda.\n");
+    system("pause");
 }
 
 void editarTelefonePorID() {
+    system("cls");
+    
     int id;
     printf("Digite o ID da pessoa: ");
     scanf("%d", &id);
@@ -460,7 +511,8 @@ void editarTelefonePorID() {
     if (id > 0 && id <= contador_de_pessoas) { // Se o ID estiver na agenda
         Telefone* telefone_atual = agenda[id - 1].telefones;
         if (telefone_atual == NULL) {
-            printf("Nenhum telefone cadastrado para esta pessoa.\n");
+            printf("\nNenhum telefone cadastrado para esta pessoa.\n");
+            system("pause");
             return;
         }
 
@@ -485,18 +537,24 @@ void editarTelefonePorID() {
                     printf("Novo Telefone: ");
                     scanf("%s", telefone_atual->numero);
                 } while (!validarTelefone(telefone_atual->numero));
-                printf("Telefone atualizado com sucesso!\n");
+                printf("\nTelefone atualizado com sucesso.\n");
+                system("pause");
+                break;
             } else if (opcao != 0) {
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
             }
         } while (opcao != 0);
     } else {
-        printf("ID inválido!\n");
+        printf("\nID invalido.\n");
+        system("pause");
     }
 }
 
 /* EXCLUSÃO */
-void confirmarExclusaoPessoa(int index) {
+void confirmarExclusaoPessoa(int index) { // parâmetro 'index' indica qual é a pessoa a ser excluída
+    system("cls");
+    
     char resposta;
     printf("Tem certeza que deseja excluir a pessoa '%s'? (S/N): ", agenda[index].nome);
     scanf(" %c", &resposta);
@@ -506,15 +564,19 @@ void confirmarExclusaoPessoa(int index) {
             agenda[j] = agenda[j + 1]; // Move as pessoas para preencher o espaço
         }
         contador_de_pessoas--; // Decrementa o contador de pessoas
-        printf("Pessoa excluída com sucesso!\n");
+        printf("Pessoa excluida com sucesso.\n");
+        system("pause");
     } else {
-        printf("Exclusão cancelada.\n");
+        printf("\nExclusao cancelada.\n");
+        system("pause");
     }
 }
 
 void excluirPessoaPorNome() {
+    system("cls");
+    
     char nome[31];
-    printf("Digite o nome da pessoa a ser excluída: ");
+    printf("Digite o nome da pessoa a ser excluida: ");
     scanf(" %[^\n]", nome);
     
     for (int i = 0; i < contador_de_pessoas; i++) {
@@ -523,22 +585,28 @@ void excluirPessoaPorNome() {
             return;
         }
     }
-    printf("Nome não encontrado na agenda.\n");
+    printf("\nNome nao encontrado na agenda.\n");
+    system("pause");
 }
 
 void excluirPessoaPorID() {
+    system("cls");
+    
     int id;
-    printf("Digite o ID da pessoa a ser excluída: ");
+    printf("Digite o ID da pessoa a ser excluida: ");
     scanf("%d", &id);
     
     if (id > 0 && id <= contador_de_pessoas) { // Se o ID estiver na agenda
         confirmarExclusaoPessoa(id - 1); // Confirma a exclusão
     } else {
-        printf("ID inválido!\n");
+        printf("\nID invalido.\n");
+        system("pause");
     }
 }
 
 void excluirTelefonePorNome() {
+    system("cls");
+    
     char nome[31];
     printf("Digite o nome da pessoa para excluir o telefone: ");
     scanf(" %[^\n]", nome);
@@ -547,7 +615,8 @@ void excluirTelefonePorNome() {
         if (strcmp(agenda[i].nome, nome) == 0) { // Se o nome estiver na agenda
             Telefone* telefone_atual = agenda[i].telefones;
             if (telefone_atual == NULL) {
-                printf("Nenhum telefone cadastrado para esta pessoa.\n");
+                printf("\nNenhum telefone cadastrado para esta pessoa.\n");
+                system("pause");
                 return;
             }
 
@@ -579,18 +648,24 @@ void excluirTelefonePorNome() {
                         anterior->proximo = temp->proximo; // Remove o telefone da lista
                     }
                     free(temp); // Libera a memória
-                    printf("Telefone excluído com sucesso!\n");
+                    printf("Telefone excluido com sucesso.\n");
+                    system("pause");
+                    return;
                 } else if (opcao != 0) {
-                    printf("Opcao invalida! Tente novamente.\n");
+                    printf("\nOpcao invalida. Tente novamente.\n");
+                    system("pause");
                 }
             } while (opcao != 0);
             return; // Sai da função após excluir
         }
     }
-    printf("Nome não encontrado na agenda.\n");
+    printf("\nNome nao encontrado na agenda.\n");
+    system("pause");
 }
 
 void excluirTelefonePorID() {
+    system("cls");
+    
     int id;
     printf("Digite o ID da pessoa para excluir o telefone: ");
     scanf("%d", &id);
@@ -598,12 +673,15 @@ void excluirTelefonePorID() {
     if (id > 0 && id <= contador_de_pessoas) { // Se o ID estiver na agenda
         excluirTelefonePorNome(); // Chama a função para excluir por nome
     } else {
-        printf("ID inválido!\n");
+        printf("\nID invalido.\n");
+        system("pause");
     }
 }
 
 /* CONSULTAR */
 void consultarPessoaPorNome() {
+    system("cls");
+    
     char nome[31];
     printf("Digite o nome da pessoa: ");
     scanf(" %[^\n]", nome);
@@ -619,10 +697,13 @@ void consultarPessoaPorNome() {
             return;
         }
     }
-    printf("Nome não encontrado na agenda.\n");
+    printf("\nNome nao encontrado na agenda.\n");
+    system("pause");
 }
 
 void consultarPessoaPorID() {
+    system("cls");
+    
     int id;
     printf("Digite o ID da pessoa: ");
     scanf("%d", &id);
@@ -635,11 +716,14 @@ void consultarPessoaPorID() {
         printf("E-mail: %s\n", agenda[id - 1].email);
         // Exibir telefones se necessário
     } else {
-        printf("ID inválido!\n");
+        printf("\nID invalido!\n");
+        system("pause");
     }
 }
 
 void consultarTelefonePorNome() {
+    system("cls");
+    
     char nome[31];
     printf("Digite o nome da pessoa: ");
     scanf(" %[^\n]", nome);
@@ -648,7 +732,8 @@ void consultarTelefonePorNome() {
         if (strcmp(agenda[i].nome, nome) == 0) {
             Telefone* telefone_atual = agenda[i].telefones;
             if (telefone_atual == NULL) {
-                printf("Nenhum telefone cadastrado para esta pessoa.\n");
+                printf("\nNenhum telefone cadastrado para esta pessoa.\n");
+                system("pause");
                 return;
             }
             printf("Telefones cadastrados:\n");
@@ -659,10 +744,13 @@ void consultarTelefonePorNome() {
             return;
         }
     }
-    printf("Nome não encontrado na agenda.\n");
+    printf("\nNome nao encontrado na agenda.\n");
+    system("pause");
 }
 
 void consultarTelefonePorID() {
+    system("cls");
+    
     int id;
     printf("Digite o ID da pessoa: ");
     scanf("%d", &id);
@@ -670,7 +758,8 @@ void consultarTelefonePorID() {
     if (id > 0 && id <= contador_de_pessoas) {
         Telefone* telefone_atual = agenda[id - 1].telefones;
         if (telefone_atual == NULL) {
-            printf("Nenhum telefone cadastrado para esta pessoa.\n");
+            printf("\nNenhum telefone cadastrado para esta pessoa.\n");
+            system("pause");
             return;
         }
         printf("Telefones cadastrados:\n");
@@ -679,7 +768,8 @@ void consultarTelefonePorID() {
             telefone_atual = telefone_atual->proximo;
         }
     } else {
-        printf("ID inválido!\n");
+        printf("\nID invalido!\n");
+        system("pause");
     }
 }
 
@@ -687,7 +777,8 @@ void consultarTelefonePorID() {
 void salvarDados() {
     FILE* arquivo = fopen("agenda.txt", "w");
     if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo para salvar os dados.\n");
+        printf("\nErro ao abrir o arquivo para salvar os dados.\n");
+        system("pause");
         return;
     }
 
@@ -708,7 +799,8 @@ void salvarDados() {
     }
 
     fclose(arquivo);
-    printf("Dados salvos com sucesso em 'agenda.txt'.\n");
+    printf("\nDados salvos com sucesso em 'agenda.txt'.\n");
+    system("pause");
 }
 
 
@@ -739,6 +831,8 @@ void salvarDados() {
 void exibirMenu() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal\n\n");
         printf("1. Cadastrar\n");
         printf("2. Editar\n");
@@ -765,7 +859,8 @@ void exibirMenu() {
                 printf("Saindo do programa...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 5);
 }
@@ -774,6 +869,8 @@ void exibirMenu() {
 void exibirMenuCadastro() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Cadastrar\n\n");
         printf("1. Cadastrar Pessoa\n");
         printf("2. Cadastrar Telefone\n");
@@ -789,10 +886,11 @@ void exibirMenuCadastro() {
                 exibirMenuCadastrarTelefone(); // Chama a nova função para cadastrar telefone
                 break;
             case 3:
-                printf("Retornando ao Menu Principal...\n");
+                // printf("Retornando ao Menu Principal...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -800,6 +898,8 @@ void exibirMenuCadastro() {
 void exibirMenuCadastrarTelefone() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Cadastrar / Telefone\n\n");
         printf("1. Pesquisar por Nome\n");
         printf("2. Pesquisar por IDPessoa\n");
@@ -811,11 +911,15 @@ void exibirMenuCadastrarTelefone() {
             case 1:
                 // Pesquisar por Nome
                 {
+                    system("cls");
+
                     char nome[31];
                     printf("Digite o nome da pessoa: ");
                     scanf(" %[^\n]", nome);
-                    for (int i = 0; i < contador_de_pessoas; i++) {
+                    int pessoa_encontrada = 0; // Flag para indicar se a pessoa foi encontrada
+                    for (int i = 0; i < contador_de_pessoas; i++) { // Para cada pessoa na agenda
                         if (strcmp(agenda[i].nome, nome) == 0) { // Se o nome estiver na agenda
+                            pessoa_encontrada = 1; // Marca que a pessoa foi encontrada
                             Telefone* novo_telefone = (Telefone*)malloc(sizeof(Telefone)); // Aloca novo telefone
                             do {
                                 printf("Telefone: ");
@@ -838,14 +942,19 @@ void exibirMenuCadastrarTelefone() {
                                     agenda[i].telefones = novo_telefone;
                                 }
                             } while (resposta == 'S' || resposta == 's');
-                            break;
                         }
+                    }
+                    if (!pessoa_encontrada) {
+                        printf("\nPessoa nao encontrada. Tente novamente.\n");
+                        system("pause");
                     }
                 }
                 break;
             case 2:
                 // Pesquisar por IDPessoa
                 {
+                    system("cls");
+
                     int id;
                     printf("Digite o ID da pessoa: ");
                     scanf("%d", &id);
@@ -873,15 +982,17 @@ void exibirMenuCadastrarTelefone() {
                             }
                         } while (resposta == 'S' || resposta == 's');
                     } else {
-                        printf("ID inválido!\n");
+                        printf("\nID invalido. Tente novamente.\n");
+                        system("pause");
                     }
                 }
                 break;
             case 3:
-                printf("Retornando ao Menu Principal...\n");
+                // printf("Retornando ao Menu Principal...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -890,6 +1001,8 @@ void exibirMenuCadastrarTelefone() {
 void exibirMenuEdicao() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Editar\n\n");
         printf("1. Editar Pessoa\n");
         printf("2. Editar Telefone\n");
@@ -905,10 +1018,11 @@ void exibirMenuEdicao() {
                 exibirMenuEdicaoTelefone(); // Chama o menu de edição de telefone
                 break;
             case 3:
-                printf("Retornando ao Menu Principal...\n");
+                // printf("Retornando ao Menu Principal...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -916,10 +1030,12 @@ void exibirMenuEdicao() {
 void exibirMenuEditarPessoa() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Editar / Menu Editar Pessoa\n\n");
         printf("1. Editar por Nome\n");
         printf("2. Editar por IDPessoa\n");
-        printf("3. Retornar ao Menu de Edição\n");
+        printf("3. Retornar ao Menu de Edicao\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
 
@@ -931,10 +1047,11 @@ void exibirMenuEditarPessoa() {
                 editarPessoaPorID(); // Chama a função para editar por ID
                 break;
             case 3:
-                printf("Retornando ao Menu de Edição...\n");
+                // printf("Retornando ao Menu de Edicao...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -942,6 +1059,8 @@ void exibirMenuEditarPessoa() {
 void exibirMenuEdicaoTelefone() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Editar / Menu Editar Telefone\n\n");
         printf("1. Editar Telefone por Nome\n");
         printf("2. Editar Telefone por IDPessoa\n");
@@ -957,10 +1076,11 @@ void exibirMenuEdicaoTelefone() {
                 editarTelefonePorID(); // Chama a função para editar por ID
                 break;
             case 3:
-                printf("Retornando ao Menu Principal...\n");
+                // printf("Retornando ao Menu Principal...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -969,6 +1089,8 @@ void exibirMenuEdicaoTelefone() {
 void exibirMenuExclusao() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Excluir\n\n");
         printf("1. Excluir Pessoa\n");
         printf("2. Excluir Telefone\n");
@@ -984,10 +1106,11 @@ void exibirMenuExclusao() {
                 exibirMenuExcluirTelefone(); // Chama a nova função para excluir telefone
                 break;
             case 3:
-                printf("Retornando ao Menu Principal...\n");
+                // printf("Retornando ao Menu Principal...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -995,10 +1118,12 @@ void exibirMenuExclusao() {
 void exibirMenuExcluirPessoa() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Excluir / Menu Excluir Pessoa\n\n");
         printf("1. Excluir por Nome\n");
         printf("2. Excluir por IDPessoa\n");
-        printf("3. Retornar ao Menu de Exclusão\n");
+        printf("3. Retornar ao Menu de Exclusao\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
 
@@ -1010,10 +1135,11 @@ void exibirMenuExcluirPessoa() {
                 excluirPessoaPorID(); // Chama a função para excluir por ID
                 break;
             case 3:
-                printf("Retornando ao Menu de Exclusão...\n");
+                // printf("Retornando ao Menu de Exclusao...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -1021,6 +1147,8 @@ void exibirMenuExcluirPessoa() {
 void exibirMenuExcluirTelefone() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Excluir / Menu Excluir Telefone\n\n");
         printf("1. Excluir Telefone por Nome\n");
         printf("2. Excluir Telefone por IDPessoa\n");
@@ -1036,10 +1164,11 @@ void exibirMenuExcluirTelefone() {
                 excluirTelefonePorID(); // Chama a função para excluir por ID
                 break;
             case 3:
-                printf("Retornando ao Menu de Exclusão...\n");
+                // printf("Retornando ao Menu de Exclusao...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -1048,6 +1177,8 @@ void exibirMenuExcluirTelefone() {
 void exibirMenuConsulta() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Consultar\n\n");
         printf("1. Consultar Pessoa\n");
         printf("2. Consultar Telefone\n");
@@ -1063,10 +1194,11 @@ void exibirMenuConsulta() {
                 exibirMenuConsultaTelefone(); // Chama o menu de consulta de telefone
                 break;
             case 3:
-                printf("Retornando ao Menu Principal...\n");
+                // printf("Retornando ao Menu Principal...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -1074,6 +1206,8 @@ void exibirMenuConsulta() {
 void exibirMenuConsultaPessoa() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Consultar / Consultar Pessoa\n\n");
         printf("1. Consultar por Nome\n");
         printf("2. Consultar por IDPessoa\n");
@@ -1089,10 +1223,11 @@ void exibirMenuConsultaPessoa() {
                 consultarPessoaPorID(); // Chama a função para consultar por ID
                 break;
             case 3:
-                printf("Retornando ao Menu de Consulta...\n");
+                // printf("Retornando ao Menu de Consulta...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
         }
     } while (opcao != 3);
 }
@@ -1100,6 +1235,8 @@ void exibirMenuConsultaPessoa() {
 void exibirMenuConsultaTelefone() {
     int opcao;
     do {
+        system("cls");
+
         printf("Menu Principal / Menu Consultar / Consultar Telefone\n\n");
         printf("1. Consultar Telefone por Nome\n");
         printf("2. Consultar Telefone por IDPessoa\n");
@@ -1115,10 +1252,12 @@ void exibirMenuConsultaTelefone() {
                 consultarTelefonePorID(); // Chama a função para consultar telefone por ID
                 break;
             case 3:
-                printf("Retornando ao Menu de Consulta...\n");
+                // printf("Retornando ao Menu de Consulta...\n");
                 break;
             default:
-                printf("Opcao invalida! Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
+                system("pause");
+                break;
         }
     } while (opcao != 3);
 }
