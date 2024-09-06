@@ -35,7 +35,7 @@ O código é organizado em diversas funções para manter a modularidade:
 
 ## Compilação e Execução
 
-Para compilar e executar o programa, utilize um compilador que suporte C99. Exemplo com `gcc`:
+Exemplo com `gcc`:
 
 ```bash
 gcc -o agenda agenda.c
