@@ -738,10 +738,10 @@ void consultarPessoaPorNome() {
     for (int i = 0; i < contador_de_pessoas; i++) {
         if (strcmp(agenda[i].nome, nome) == 0) {
             // Exibe as informações da pessoa
-            printf("Nome: %s\n", agenda[i].nome);
+            printf("Nome..............: %s\n", agenda[i].nome);
             printf("Data de Nascimento: %s\n", agenda[i].nascimento);
-            printf("CPF: %s\n", agenda[i].cpf);
-            printf("E-mail: %s\n", agenda[i].email);
+            printf("CPF...............: %s\n", agenda[i].cpf);
+            printf("E-mail............: %s\n", agenda[i].email);
             // Exibir telefones se necessário
             printf("\n");
             system("pause");
@@ -761,10 +761,10 @@ void consultarPessoaPorID() {
 
     if (id > 0 && id <= contador_de_pessoas) {
         // Exibe as informações da pessoa
-        printf("Nome: %s\n", agenda[id - 1].nome);
+        printf("Nome..............: %s\n", agenda[id - 1].nome);
         printf("Data de Nascimento: %s\n", agenda[id - 1].nascimento);
-        printf("CPF: %s\n", agenda[id - 1].cpf);
-        printf("E-mail: %s\n", agenda[id - 1].email);
+        printf("CPF...............: %s\n", agenda[id - 1].cpf);
+        printf("E-mail............: %s\n", agenda[id - 1].email);
         // Exibir telefones se necessário
         printf("\n");
         system("pause");
@@ -840,11 +840,11 @@ void salvarDados() {
     }
 
     for (int i = 0; i < contador_de_pessoas; i++) {
-        fprintf(arquivo, "ID: %d\n", agenda[i].id);
-        fprintf(arquivo, "Nome: %s\n", agenda[i].nome);
+        fprintf(arquivo, "ID................: %d\n", agenda[i].id);
+        fprintf(arquivo, "Nome..............: %s\n", agenda[i].nome);
         fprintf(arquivo, "Data de Nascimento: %s\n", agenda[i].nascimento);
-        fprintf(arquivo, "CPF: %s\n", agenda[i].cpf);
-        fprintf(arquivo, "E-mail: %s\n", agenda[i].email);
+        fprintf(arquivo, "CPF...............: %s\n", agenda[i].cpf);
+        fprintf(arquivo, "E-mail............: %s\n", agenda[i].email);
 
         Telefone* telefone_atual = agenda[i].telefones;
         fprintf(arquivo, "Telefones:\n");
