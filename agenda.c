@@ -571,7 +571,7 @@ void confirmarExclusaoPessoa(int index) { // parâmetro 'index' indica qual é a p
             agenda[j] = agenda[j + 1]; // Move as pessoas para preencher o espaço
         }
         contador_de_pessoas--; // Decrementa o contador de pessoas
-        printf("Pessoa excluida com sucesso.\n");
+        printf("\nPessoa excluida com sucesso.\n");
         system("pause");
     } else {
         printf("\nExclusao cancelada.\n");
@@ -655,7 +655,7 @@ void excluirTelefonePorNome() {
                         anterior->proximo = temp->proximo; // Remove o telefone da lista
                     }
                     free(temp); // Libera a memória
-                    printf("Telefone excluido com sucesso.\n");
+                    printf("\nTelefone excluido com sucesso.\n");
                     system("pause");
                     return;
                 } else if (opcao != 0) {
@@ -822,6 +822,7 @@ void consultarTelefonePorID() {
             printf("%s\n", telefone_atual->numero);
             telefone_atual = telefone_atual->proximo;
         }
+        printf("\n");
         system("pause");
     } else {
         printf("\nID invalido!\n");
