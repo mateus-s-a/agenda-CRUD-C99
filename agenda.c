@@ -244,47 +244,52 @@ void cadastrarPessoa() {
 
         do {
             printf("Data de Nascimento (dd/mm/aaaa): ");
-            scanf(" %s", nova_pessoa.nascimento);
+            scanf(" %11s", nova_pessoa.nascimento);
         } while (!validarData(nova_pessoa.nascimento));
 
         do {
             printf("CPF: ");
-            scanf(" %s", nova_pessoa.cpf);
+            scanf(" %12s", nova_pessoa.cpf);
         } while (!validarCPF(nova_pessoa.cpf));
 
         do {
             printf("E-mail: ");
-            scanf(" %s", nova_pessoa.email);
+            scanf(" %31s", nova_pessoa.email);
         } while (!validarEmail(nova_pessoa.email));
 
+        // Adiciona o primeiro telefone
         Telefone* novo_telefone = (Telefone*)malloc(sizeof(Telefone));
         do {
             printf("Telefone: ");
-            scanf(" %s", novo_telefone->numero);
+            scanf(" %12s", novo_telefone->numero);
         } while (!validarTelefone(novo_telefone->numero));
 
         novo_telefone->proximo = NULL;
         nova_pessoa.telefones = novo_telefone;
 
+
+        // Pergunta se o usuário deseja adicionar mais telefones
+        char resposta;
+        do {
+            printf("Deseja adicionar um novo telefone? (S/N): ");
+            scanf(" %c", &resposta);
+            if (resposta == 'S' || resposta == 's') {
+                Telefone* telefone_adicional = (Telefone*)malloc(sizeof(Telefone));
+                do {
+                    printf("Telefone: ");
+                    scanf(" %12s", telefone_adicional->numero);
+                } while (!validarTelefone(telefone_adicional->numero));
+
+                telefone_adicional->proximo - nova_pessoa.telefones;
+                nova_pessoa.telefones = telefone_adicional;
+            }
+
+        } while (resposta == 'S' || resposta == 's');
+
+
+        // Adiciona a nova pessoa à agenda
         agenda[contador_de_pessoas] = nova_pessoa;
         contador_de_pessoas++;
-
-        for (int i = 0; i < contador_de_pessoas; i++) {
-            char resposta;
-            do {
-                printf("Deseja adicionar um novo telefone? (S/N): ");
-                scanf(" %c", &resposta);
-                if (resposta == 'S' || resposta == 's') {
-                    novo_telefone = (Telefone*)malloc(sizeof(Telefone));
-                    do {
-                        printf("Telefone: ");
-                        scanf(" %s", novo_telefone->numero);
-                    } while (!validarTelefone(novo_telefone->numero));
-                    novo_telefone->proximo = agenda[i].telefones; // Adiciona no início da lista
-                    agenda[i].telefones = novo_telefone;
-                }
-            } while (resposta == 'S' || resposta == 's');
-        }
 
         printf("\nCadastro concluido com sucesso.\n");
         system("pause");
