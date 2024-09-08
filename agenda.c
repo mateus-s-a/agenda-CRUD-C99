@@ -474,7 +474,7 @@ void editarTelefonePorNome() {
             do {
                 system("cls");
 
-                printf("Telefones cadastrados:\n");
+                printf("\nTelefones cadastrados:\n");
                 int j = 1;
                 while (telefone_atual != NULL) {
                     printf("%d. %s\n", j++, telefone_atual->numero);
@@ -525,7 +525,7 @@ void editarTelefonePorID() {
 
         int opcao;
         do {
-            printf("Telefones cadastrados:\n");
+            printf("\nTelefones cadastrados:\n");
             int j = 1;
             while (telefone_atual != NULL) {
                 printf("%d. %s\n", j++, telefone_atual->numero);
@@ -569,6 +569,7 @@ void confirmarExclusaoPessoa(int index) { // parâmetro 'index' indica qual é a
         // Lógica para remover a pessoa da agenda
         for (int j = index; j < contador_de_pessoas - 1; j++) {
             agenda[j] = agenda[j + 1]; // Move as pessoas para preencher o espaço
+            agenda[j].id = j + 1; // Atualiza o ID
         }
         contador_de_pessoas--; // Decrementa o contador de pessoas
         printf("\nPessoa excluida com sucesso.\n");
@@ -629,7 +630,7 @@ void excluirTelefonePorNome() {
 
             int opcao;
             do {
-                printf("Telefones cadastrados:\n");
+                printf("\nTelefones cadastrados:\n");
                 int j = 1;
                 Telefone* temp = telefone_atual;
                 while (temp != NULL) {
@@ -687,7 +688,7 @@ void excluirTelefonePorID() {
 
         int opcao;
         do {
-            printf("Telefones cadastrados:\n");
+            printf("\nTelefones cadastrados:\n");
             int j = 1;
             Telefone* temp = telefone_atual;
             while (temp != NULL) {
@@ -789,7 +790,7 @@ void consultarTelefonePorNome() {
                 system("pause");
                 return;
             }
-            printf("Telefones cadastrados:\n");
+            printf("\nTelefones cadastrados:\n");
             while (telefone_atual != NULL) {
                 printf("%s\n", telefone_atual->numero);
                 telefone_atual = telefone_atual->proximo;
@@ -817,7 +818,7 @@ void consultarTelefonePorID() {
             system("pause");
             return;
         }
-        printf("Telefones cadastrados:\n");
+        printf("\nTelefones cadastrados:\n");
         while (telefone_atual != NULL) {
             printf("%s\n", telefone_atual->numero);
             telefone_atual = telefone_atual->proximo;
@@ -958,8 +959,8 @@ void exibirMenuCadastrarTelefone() {
         system("cls");
 
         printf("Menu Principal / Menu Cadastrar / Telefone\n\n");
-        printf("1. Pesquisar por Nome\n");
-        printf("2. Pesquisar por IDPessoa\n");
+        printf("1. Cadastrar Telefone por Nome\n");
+        printf("2. Cadastrar Telefone por ID\n");
         printf("3. Retornar ao Menu Principal\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -1091,7 +1092,7 @@ void exibirMenuEditarPessoa() {
 
         printf("Menu Principal / Menu Editar / Menu Editar Pessoa\n\n");
         printf("1. Editar por Nome\n");
-        printf("2. Editar por IDPessoa\n");
+        printf("2. Editar por ID\n");
         printf("3. Retornar ao Menu de Edicao\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -1120,7 +1121,7 @@ void exibirMenuEdicaoTelefone() {
 
         printf("Menu Principal / Menu Editar / Menu Editar Telefone\n\n");
         printf("1. Editar Telefone por Nome\n");
-        printf("2. Editar Telefone por IDPessoa\n");
+        printf("2. Editar Telefone por ID\n");
         printf("3. Retornar ao Menu Principal\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -1179,7 +1180,7 @@ void exibirMenuExcluirPessoa() {
 
         printf("Menu Principal / Menu Excluir / Menu Excluir Pessoa\n\n");
         printf("1. Excluir por Nome\n");
-        printf("2. Excluir por IDPessoa\n");
+        printf("2. Excluir por ID\n");
         printf("3. Retornar ao Menu de Exclusao\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -1208,7 +1209,7 @@ void exibirMenuExcluirTelefone() {
 
         printf("Menu Principal / Menu Excluir / Menu Excluir Telefone\n\n");
         printf("1. Excluir Telefone por Nome\n");
-        printf("2. Excluir Telefone por IDPessoa\n");
+        printf("2. Excluir Telefone por ID\n");
         printf("3. Retornar ao Menu de Exclusao\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -1267,7 +1268,7 @@ void exibirMenuConsultaPessoa() {
 
         printf("Menu Principal / Menu Consultar / Consultar Pessoa\n\n");
         printf("1. Consultar por Nome\n");
-        printf("2. Consultar por IDPessoa\n");
+        printf("2. Consultar por ID\n");
         printf("3. Retornar ao Menu de Consulta\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -1296,7 +1297,7 @@ void exibirMenuConsultaTelefone() {
 
         printf("Menu Principal / Menu Consultar / Consultar Telefone\n\n");
         printf("1. Consultar Telefone por Nome\n");
-        printf("2. Consultar Telefone por IDPessoa\n");
+        printf("2. Consultar Telefone por ID\n");
         printf("3. Retornar ao Menu de Consulta\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
